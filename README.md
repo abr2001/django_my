@@ -77,14 +77,14 @@ python manage.py runserver
 
 Админ-панель: http://127.0.0.1:8000/admin/
 
-# Запустить Celery Worker
+### Запустить Celery Worker
 ./start_celery.sh
-# или
+###  или
 celery -A config worker --loglevel=info
 
-# Запустить Celery Beat (планировщик)
+### Запустить Celery Beat (планировщик)
 ./start_celery_beat.sh
-# или
+###  или
 ```
 celery -A config beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
 ```
