@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог вин - Винотека</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L15 15H25L20 5Z" fill="#8B4513"/>
+                        <rect x="17" y="15" width="6" height="20" fill="#8B4513"/>
+                        <ellipse cx="20" cy="35" rx="8" ry="3" fill="#8B4513"/>
+                    </svg>
+                    <span>Винотека</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="{% url 'main:landing' %}">Главная</a></li>
+                    <li><a href="{% url 'main:catalog' %}">Каталог</a></li>
+                    <li><a href="{% url 'main:landing' %}#delivery">Доставка</a></li>
+                    <li><a href="{% url 'main:landing' %}#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="catalog-hero">
+        <div class="container">
+            <h1>Каталог вин</h1>
+            <p>Выберите идеальное вино из нашей коллекции</p>
+        </div>
+    </section>
+
+    <section class="catalog-section">
+        <div class="container">
+            <div class="catalog-filters">
+                <h3>Фильтр по типу:</h3>
+                <div class="filter-buttons">
+                    <a href="{% url 'main:catalog' %}" class="filter-btn {% if not selected_type %}active{% endif %}">Все вина</a>
+                    <a href="{% url 'main:catalog' %}?type=red" class="filter-btn {% if selected_type == 'red' %}active{% endif %}">Красные</a>
+                    <a href="{% url 'main:catalog' %}?type=white" class="filter-btn {% if selected_type == 'white' %}active{% endif %}">Белые</a>
+                    <a href="{% url 'main:catalog' %}?type=rose" class="filter-btn {% if selected_type == 'rose' %}active{% endif %}">Розовые</a>
+                    <a href="{% url 'main:catalog' %}?type=sparkling" class="filter-btn {% if selected_type == 'sparkling' %}active{% endif %}">Игристые</a>
+                </div>
+            </div>
+
+            <div class="wines-grid">
+                {% for wine in wines %}
+                <div class="wine-card">
+                    <div class="wine-badge {{ wine.wine_type }}">{{ wine.get_wine_type_display }}</div>
+                    <div class="wine-image">
+                        <div class="wine-bottle {{ wine.wine_type }}-bottle"></div>
+                    </div>
+                    <div class="wine-info">
+                        <h3 class="wine-name">{{ wine.name }}</h3>
+                        <p class="wine-origin">{{ wine.country }}, {{ wine.region }}</p>
+                        <p class="wine-year">{{ wine.year }} год</p>
+                        <div class="wine-details">
+                            <span class="detail-item">🍇 {{ wine.grape_variety }}</span>
+                            <span class="detail-item">🍷 {{ wine.volume }} мл</span>
+                            <span class="detail-item">💪 {{ wine.alcohol }}%</span>
+                        </div>
+                        <p class="wine-description">{{ wine.description|truncatewords:20 }}</p>
+                        <div class="wine-footer">
+                            <span class="wine-price">{{ wine.price }} ₽</span>
+                            <button class="btn-add-cart">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="no-wines">
+                    <h3>Вина не найдены</h3>
+                    <p>К сожалению, в данной категории пока нет товаров</p>
+                    <a href="{% url 'main:catalog' %}" class="btn btn-primary">Посмотреть все вина</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Винотека</h4>
+                    <p>Лучшие вина мира с доставкой по России</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Каталог</h4>
+                    <ul>
+                        <li><a href="{% url 'main:catalog' %}?type=red">Красные вина</a></li>
+                        <li><a href="{% url 'main:catalog' %}?type=white">Белые вина</a></li>
+                        <li><a href="{% url 'main:catalog' %}?type=sparkling">Игристые вина</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li>+7 (495) 123-45-67</li>
+                        <li>info@vinoteka.ru</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Винотека. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

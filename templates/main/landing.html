@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Винотека - Лучшие вина мира</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L15 15H25L20 5Z" fill="#8B4513"/>
+                        <rect x="17" y="15" width="6" height="20" fill="#8B4513"/>
+                        <ellipse cx="20" cy="35" rx="8" ry="3" fill="#8B4513"/>
+                    </svg>
+                    <span>Винотека</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="{% url 'main:catalog' %}">Каталог</a></li>
+                    <li><a href="#delivery">Доставка</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Изысканные вина со всего мира</h1>
+                <p class="hero-subtitle">Откройте для себя коллекцию премиальных вин от лучших виноделен Европы и мира</p>
+                <div class="hero-buttons">
+                    <a href="{% url 'main:catalog' %}" class="btn btn-primary">Смотреть каталог</a>
+                    <a href="#about" class="btn btn-secondary">Узнать больше</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🍷</div>
+                    <h3>Премиум качество</h3>
+                    <p>Только сертифицированные вина от проверенных производителей</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставим ваш заказ в течение 24 часов по Москве</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Эксклюзивные коллекции</h3>
+                    <p>Редкие вина, которые вы не найдете в обычных магазинах</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Консультация сомелье</h3>
+                    <p>Поможем подобрать идеальное вино для любого случая</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="catalog">
+        <div class="container">
+            <h2 class="section-title">Популярные категории</h2>
+            <div class="categories">
+                <div class="category-card">
+                    <div class="category-image red-wine"></div>
+                    <h3>Красные вина</h3>
+                    <p>Насыщенные и элегантные вина из лучших регионов</p>
+                    <a href="{% url 'main:catalog' %}?type=red" class="category-link">Смотреть →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-image white-wine"></div>
+                    <h3>Белые вина</h3>
+                    <p>Свежие и ароматные вина для любого повода</p>
+                    <a href="{% url 'main:catalog' %}?type=white" class="category-link">Смотреть →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-image rose-wine"></div>
+                    <h3>Розовые вина</h3>
+                    <p>Легкие и изысканные вина с тонким вкусом</p>
+                    <a href="{% url 'main:catalog' %}?type=rose" class="category-link">Смотреть →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-image sparkling-wine"></div>
+                    <h3>Игристые вина</h3>
+                    <p>Шампанское и просекко для особых моментов</p>
+                    <a href="{% url 'main:catalog' %}?type=sparkling" class="category-link">Смотреть →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="delivery" class="delivery">
+        <div class="container">
+            <div class="delivery-content">
+                <div class="delivery-text">
+                    <h2>Доставка и оплата</h2>
+                    <ul class="delivery-list">
+                        <li>✓ Бесплатная доставка при заказе от 5000 ₽</li>
+                        <li>✓ Доставка по Москве в течение 24 часов</li>
+                        <li>✓ Доставка по России 2-5 дней</li>
+                        <li>✓ Оплата наличными или картой</li>
+                        <li>✓ Проверка качества перед получением</li>
+                    </ul>
+                </div>
+                <div class="delivery-image">
+                    <div class="delivery-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📞 Телефон</h3>
+                        <p>+7 (495) 123-45-67</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <p>info@vinoteka.ru</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📍 Адрес</h3>
+                        <p>Москва, ул. Винная, д. 10</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🕐 Режим работы</h3>
+                        <p>Пн-Вс: 10:00 - 22:00</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="Телефон" required>
+                        <textarea placeholder="Сообщение" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Винотека</h4>
+                    <p>Лучшие вина мира с доставкой по России</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Каталог</h4>
+                    <ul>
+                        <li><a href="#">Красные вина</a></li>
+                        <li><a href="#">Белые вина</a></li>
+                        <li><a href="#">Игристые вина</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li>+7 (495) 123-45-67</li>
+                        <li>info@vinoteka.ru</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Винотека. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
